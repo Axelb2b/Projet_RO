@@ -1,5 +1,6 @@
 package com.alexscode.teaching;
 
+import com.alexscode.teaching.tap.AlgoGlouton;
 import com.alexscode.teaching.tap.Instance;
 import com.alexscode.teaching.tap.Objectives;
 import com.alexscode.teaching.tap.TAPSolver;
@@ -19,7 +20,7 @@ public class Main {
 
         Objectives obj = new Objectives(f4_small);
 
-        TAPSolver solver = new Test();
+        TAPSolver solver = new AlgoGlouton();
         List<Integer> solution = solver.solve(f4_small);
 
         System.out.println("Interet: " + obj.interest(solution));

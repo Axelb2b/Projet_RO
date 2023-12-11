@@ -17,6 +17,7 @@ public class Element implements Comparable<Element> {
         this.value = value;
     }
 
+    @Override
     public int compareTo(Element e) {
         return Double.compare(this.value, e.value);
     }
