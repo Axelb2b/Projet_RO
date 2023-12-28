@@ -34,27 +34,38 @@ public class AlgoGlouton implements TAPSolver{
             
         }
         demo.subList(0, demo.size() - 1);
-
+    
+    // Ajout de la recherche locale avec l'opérateur API 
+    double min_sol = demo.stream().mapToDouble(j -> ist.interest[j]).sum();
+    System.out.println(min_sol);   
     boolean meilleur = true;    
-    while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget() && meilleur != false){
-        List<Integer> sequence = demo;  
-        double min_sol = sequence.stream().mapToDouble(j -> ist.interest[j]).sum();
-        for(int i = 0; i < ist.getSize()-1;i++){
-            Collections.swap(sequence, i, i+1);
-            voisins.add(new Element(i, sequence.stream().mapToDouble(j -> ist.interest[j]).sum()));
+    while ( meilleur != false){
+          
+        
+        for(int i = 0; i < demo.size()-1;i++){
+            Collections.swap(demo, i, i+1);
+            voisins.add(new Element(i, demo.stream().mapToDouble(j -> ist.interest[j]).sum()));
+            Collections.swap(demo, i+1,i);
+            System.out.println(voisins.get(i));
         }
-    Collections.sort(voisins);
-    Collections.swap(demo, voisins.get(-1).index,voisins.get(-1).index+1 );
-    if(min_sol == demo.stream().mapToDouble(j -> ist.interest[j]).sum() ){
-        meilleur = false;
-    }else{
-        min_sol = demo.stream().mapToDouble(j -> ist.interest[j]).sum();
-    }
+        
+        
+        Collections.sort(voisins);
+        Collections.swap(demo, voisins.get(voisins.size()-1).index,voisins.get(voisins.size()-1).index+1 );
+        voisins.clear();
 
+        if(min_sol == demo.stream().mapToDouble(j -> ist.interest[j]).sum() ){
+            meilleur = false;
+        }else{
+            min_sol = demo.stream().mapToDouble(j -> ist.interest[j]).sum();
+
+        }
+        
 
      
             
 }
+//*/
 return demo; 
     
     
