@@ -46,14 +46,14 @@ public class testGloutonEtDistance implements TAPSolver{
             demo.add(ratiosFinal.get(index1++).index);
             
         }
-        demo.subList(0, demo.size() - 1);
+        List<Integer> sub = new ArrayList<>(demo.subList(0, demo.size()-1));
 
 
 
 
 
-
-        return demo; 
+        return sub; 
+        
     
     }
     
