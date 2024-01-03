@@ -5,6 +5,7 @@ import com.alexscode.teaching.tap.Instance;
 import com.alexscode.teaching.tap.Objectives;
 import com.alexscode.teaching.tap.TAPSolver;
 import com.alexscode.teaching.tap.Test;
+import com.alexscode.teaching.tap.testGloutonEtDistance;
 
 import java.util.List;
 import java.util.TreeSet;
@@ -20,7 +21,7 @@ public class Main {
 
         Objectives obj = new Objectives(f4_small);
 
-        TAPSolver solver = new AlgoGlouton();
+        TAPSolver solver = new testGloutonEtDistance();
         List<Integer> solution = solver.solve(f4_small);
 
         System.out.println("Interet: " + obj.interest(solution));
