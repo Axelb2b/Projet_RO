@@ -22,25 +22,38 @@ public class testGloutonEtDistance implements TAPSolver{
 
         Collections.sort(ratios);
         int index1 = 0;
-        List<Double> differentesDistances = new ArrayList<>();
-        List<Element> ratiosFinal = new ArrayList<>();
+        List<Element> RatioNonPermanent = new ArrayList<>();
+        List<Element> distancesAvecI = new ArrayList<>();
+
         
         while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget()){
            //calcule la distance entre les 2 éléments (éléments de la liste de ratios)
-            for (int i =0; i<ratios.size()-1;i++){
+           /* for (int i =0; i<ratios.size()-1;i++){
+                ratioFinal=ratios;
                 int identifiant1=ratios.get(i).index;
-                int identifiant2=ratios.get(i+1).index;
+
+                for (int j=1;i<ratios.size();j++){
+                    int identifiant2=ratios.get(j).index;
+                    double distancesEntre1Et2 = ist.distances[identifiant1][identifiant2];
                 
-                double distancesEntre1Et2 = ist.distances[identifiant1][identifiant2];
-                differentesDistances.add(distancesEntre1Et2);
-            }
-           //refaire un ratio en impliquant la distance dans le calcul
-            for (int i = 0; i< ratios.size()-1; i++){
+                double newRatio = ratios.get(i).value + ratios.get(j).value + distancesEntre1Et2;
 
-                double resultat = ratios.get(i).value + ratios.get(i + 1).value + differentesDistances.get(i);
-                ratiosFinal.add(new Element(i, resultat));
-
+                ratioFinal.add(newRatio);
+                }
+                
             }
+
+*/
+            RatioNonPermanent=ratios;
+            for (int i =0; i<RatioNonPermanent.size()-1;i++){
+                int identifiant1=ratios.get(i).index;
+                for (int j=1;i<ratios.size();j++){
+                    int identifiant2=ratios.get(j).index;
+                    double distancesEntre1Et2 = ist.distances[identifiant1][identifiant2];
+                    distancesAvecI.add(new Element(i,distancesEntre1Et2));
+                    double newRatio = ratios.get(j).value + distancesEntre1Et2;
+                }
+            }    
 
            //mettre cette ligne
             demo.add(ratiosFinal.get(index1++).index);
