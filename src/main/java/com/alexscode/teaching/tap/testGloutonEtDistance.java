@@ -27,7 +27,7 @@ public class testGloutonEtDistance implements TAPSolver{
         
         while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget()){
            //calcule la distance entre les 2 éléments (éléments de la liste de ratios)
-            for (int i =0; i<=ratios.size()-1;i++){
+            for (int i =0; i<ratios.size()-1;i++){
                 int identifiant1=ratios.get(i).index;
                 int identifiant2=ratios.get(i+1).index;
                 
