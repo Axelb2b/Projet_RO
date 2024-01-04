@@ -28,7 +28,7 @@ public class AlgoGlouton implements TAPSolver{
         int index1 = 0;
 
         //boucle qui va remplir la solution  jusqu'à la limite (coût ou distance)
-        while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget()){
+        while (obj.distance(demo) <= ist.getMaxDistance() && obj.time(demo) <= ist.getTimeBudget()){
             demo.add(ratios.get(index1++).index);
             System.out.println(obj.distance(demo));
             System.out.println(obj.time(demo));    

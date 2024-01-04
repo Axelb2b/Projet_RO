@@ -21,7 +21,7 @@ public class Main {
 
         Objectives obj = new Objectives(f4_small);
 
-        TAPSolver solver = new AlgoGlouton();
+        TAPSolver solver = new testGloutonEtDistance();
         List<Integer> solution = solver.solve(f4_small);
 
         System.out.println("Interet: " + obj.interest(solution));
