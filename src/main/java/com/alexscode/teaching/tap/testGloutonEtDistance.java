@@ -43,7 +43,7 @@ public class testGloutonEtDistance implements TAPSolver{
                     break;
                 }
             }
-            ratiosTampon = ratios;
+            ratiosTampon.addAll(ratios);
             for(int i = 0;i<ratios.size();i++){
                 distance = ist.distances[demo.get(index1)][ratiosTampon.get(i).index];
                 ratiosTampon.get(i).value += distance/ist.costs[i];
@@ -51,6 +51,7 @@ public class testGloutonEtDistance implements TAPSolver{
             }
             Collections.sort(ratiosTampon);
             demo.add(ratiosTampon.get(0).index);
+            ratiosTampon.clear();
             index1++;
            
             

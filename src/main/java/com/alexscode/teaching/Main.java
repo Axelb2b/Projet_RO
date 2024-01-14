@@ -3,6 +3,7 @@ package com.alexscode.teaching;
 import com.alexscode.teaching.tap.AlgoGlouton;
 import com.alexscode.teaching.tap.Instance;
 import com.alexscode.teaching.tap.Objectives;
+import com.alexscode.teaching.tap.Swap;
 import com.alexscode.teaching.tap.TAPSolver;
 import com.alexscode.teaching.tap.Test;
 import com.alexscode.teaching.tap.testGloutonEtDistance;
@@ -19,16 +20,16 @@ public class Main {
         Instance f1_3_big = Instance.readFile("./instances/f1_tap_3_400.dat", 6600, 540);
         Instance f1_9_big = Instance.readFile("./instances/f1_tap_9_400.dat", 6600, 540);
 
-        Objectives obj = new Objectives(f1_3_big);
+        Objectives obj = new Objectives(f4_1_big);
 
-        TAPSolver solver = new testGloutonEtDistance();
-        List<Integer> solution = solver.solve(f1_3_big);
+        TAPSolver solver = new Swap();
+        List<Integer> solution = solver.solve(f4_1_big);
 
         System.out.println("Interet: " + obj.interest(solution));
         System.out.println("Temps: " + obj.time(solution));
         System.out.println("Distance: " + obj.distance(solution));
 
-        System.out.println("Feasible ? " + isSolutionFeasible(f1_3_big, solution));
+        System.out.println("Feasible ? " + isSolutionFeasible(f4_1_big, solution));
     }
 
     public static boolean isSolutionFeasible(Instance ist, List<Integer> sol){

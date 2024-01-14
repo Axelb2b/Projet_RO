@@ -29,9 +29,10 @@ public class AlgoGlouton implements TAPSolver{
 
         //boucle qui va remplir la solution  jusqu'à la limite (coût ou distance)
         while (obj.distance(demo) <= ist.getMaxDistance() && obj.time(demo) <= ist.getTimeBudget()){
-            demo.add(ratios.get(index1++).index);
+            demo.add(ratios.get(index1).index);
             System.out.println(obj.distance(demo));
-            System.out.println(obj.time(demo));    
+            System.out.println(obj.time(demo));
+            index1++;    
         }
         //Enlever la requête qui fait "déborder" là solution
         List<Integer> sub = new ArrayList<>(demo.subList(0, demo.size()-1));
