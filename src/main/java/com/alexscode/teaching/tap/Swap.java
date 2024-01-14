@@ -16,6 +16,7 @@ public class Swap implements TAPSolver{
         List<Element> ratios = new ArrayList<>();
         //Liste des objets non sélectionnées par l'algo de liste
         List<Integer> pasDanssacADos = new ArrayList<>();
+
         ArrayList<Integer> demoCopy = new ArrayList<>();
         for(int i = 0;i < ist.size; i++){
             pasDanssacADos.add(i);
@@ -42,34 +43,43 @@ public class Swap implements TAPSolver{
         demo.subList(0, demo.size() - 1);
     
     // Ajout de la recherche locale avec l'opérateur SWAP
+    //sol minimale àa améliorer
     double min_sol_base = 0;
     double min_sol = demo.stream().mapToDouble(j -> ist.interest[j]).sum();
+    //Condition de sortie de la boucle
     boolean meilleur = true;
+    //int qui sert à garder la valeur à remettre dans les objets du sac à dos
     int valSwap = 0;
     while (meilleur != false){ 
         min_sol_base = min_sol;
         for(int i = 0; i<demo.size();i++){
+            //Shallow copy de demo 
             demoCopy.clear();
             demoCopy.addAll(demo);
             for(int j = 0; j<pasDanssacADos.size();j++){
                 valSwap = demoCopy.get(i);
                 demoCopy.set(i, pasDanssacADos.get(j));
+                //si solution possible
                 if(obj.distance(demoCopy) <= ist.getMaxDistance() && obj.time(demoCopy) <= ist.getTimeBudget()){
+                    //Si solution meilleure, remplacer la solution actuelle par son voisin 
                     if(min_sol < demoCopy.stream().mapToDouble(ju -> ist.interest[ju]).sum()){
                         min_sol = demoCopy.stream().mapToDouble(ju -> ist.interest[ju]).sum();
-                        pasDanssacADos.add(valSwap);
                         pasDanssacADos.remove(j);
+                        //Problème de duplicats, vérifie si l'objet se trouve déjà dans la liste
+                        if(pasDanssacADos.contains(valSwap) == false){
+                            pasDanssacADos.add(valSwap);
+                        }
+                        //Remplace demo 
                         demo.clear();
                         demo.addAll(demoCopy);
                     }
                 }
             }
         }
+        //Si un tour de voisins à été effectué sans cahngements, retourne faux et sortie de bloucle 
         if(min_sol_base == min_sol){
             meilleur = false;
-        }
-        
-        
+        } 
     }
     
 
