@@ -22,7 +22,7 @@ public class Main {
 
         Objectives obj = new Objectives(f4_1_big);
 
-        TAPSolver solver = new Swap();
+        TAPSolver solver = new testGloutonEtDistance();
         List<Integer> solution = solver.solve(f4_1_big);
 
         System.out.println("Interet: " + obj.interest(solution));
