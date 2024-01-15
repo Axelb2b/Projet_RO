@@ -47,7 +47,7 @@ public class testGloutonEtDistance implements TAPSolver{
 
             for(int i = 0;i<ratios.size();i++){
                 distance = ist.distances[demo.get(index1)][ratiosTampon.get(i).index];
-                ratiosTampon.get(i).value += distance/ist.costs[i];
+                ratiosTampon.get(i).value += distance/ist.costs[i] ;
             }
             //Tri de la liste d'Element sur la valeur
             Collections.sort(ratiosTampon);
