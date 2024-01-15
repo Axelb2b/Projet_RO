@@ -18,7 +18,7 @@ public class testGloutonEtDistance implements TAPSolver{
         
         //création de la lite de ratios coût/interêt pour chaque objet (condition de l'algo de liste)
         for (int i = 0; i< ist.size; i++){
-            ratios.add(new Element(i,ist.costs[i]/ist.interest[i]));
+            ratios.add(new Element(i,ist.costs[i]/(Math.pow(ist.interest[i], 10))));
         }
 
         //Tri de la liste d'Element sur la valeur
@@ -47,7 +47,7 @@ public class testGloutonEtDistance implements TAPSolver{
 
             for(int i = 0;i<ratios.size();i++){
                 distance = ist.distances[demo.get(index1)][ratiosTampon.get(i).index];
-                ratiosTampon.get(i).value += distance/ist.interest[i];
+                ratiosTampon.get(i).value *= distance;
             }
             //Tri de la liste d'Element sur la valeur
             Collections.sort(ratiosTampon);
